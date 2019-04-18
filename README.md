@@ -3,6 +3,7 @@
 ## Commit Proposal
 
 Matriculation Number: 10-727-104
+Email               :
 
 Project idea short description: 
 * Kicker-Board (working title). 
@@ -14,8 +15,10 @@ to be fully valid). The web application creates leaderboards and displays the we
 
 ## Project confirmation
 
-< to be filled by lecturer>
+Cool idea. Go for it.
 
+Confirmed.
+D. König
 
 ## Project delivery <to be filled by student>
 
