@@ -3,7 +3,7 @@
 ## Commit Proposal
 
 Matriculation Number: 10-727-104
-Email               :
+Email               : daniel.obrist@students.fhnw.ch
 
 Project idea short description: 
 * Kicker-Board (working title). 
