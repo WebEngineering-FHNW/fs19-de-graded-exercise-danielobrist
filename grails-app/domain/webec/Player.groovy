@@ -2,16 +2,22 @@ package webec
 
 class Player {
 
+    String  nickname
     String firstName
     String lastName
 
     @Override
     String toString() {
-        return firstName + " " +  lastName
+        if (firstName != null && lastName != null) {
+            return nickname + "(" + firstName + " " +  lastName + ")"
+        } else {
+            return nickname
+        }
     }
 
     static constraints = {
-        firstName blank:    false
-        lastName  nullable: true
+        nickname    blank:      false
+        firstName   nullable:   true
+        lastName    nullable:   true
     }
 }
