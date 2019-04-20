@@ -1,9 +1,6 @@
 package webec
 
 import grails.util.Environment
-import webec.SecRole
-import webec.SecUser
-import webec.SecUserSecRole
 
 class BootStrap {
 
@@ -23,10 +20,14 @@ class BootStrap {
         assert SecUser.count() == 1
         assert SecUserSecRole.count() == 1
 
-        Player daniel = save(new Player(firstName: "Daniel", lastName: "Obrist", nickname: "fanta"))
+        Player daniel = save(new Player(firstName: "Daniel", lastName: "Obrist", nickName: "fanta"))
 
         for (int i = 0; i < 10; i++) {
-            save(new Player(firstName: "first" + i, lastName: "last" + i, nickname: "nickname" + i))
+            save(new Player(firstName: "first" + i, lastName: "last" + i, nickName: "nickName" + i))
+        }
+
+        for (int i = 0; i < 10; i++) {
+            save(new Team(teamName: "team" + i))
         }
 
     }

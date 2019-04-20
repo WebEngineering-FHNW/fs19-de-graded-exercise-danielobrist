@@ -2,21 +2,24 @@ package webec
 
 class Player {
 
-    String  nickname
+    String nickName
     String firstName
     String lastName
+
+    static hasMany = [membership: Membership]
+
 
     @Override
     String toString() {
         if (firstName != null && lastName != null) {
-            return nickname + "(" + firstName + " " +  lastName + ")"
+            return nickName + " (" + firstName + " " +  lastName + ")"
         } else {
-            return nickname
+            return nickName
         }
     }
 
     static constraints = {
-        nickname    blank:      false
+        nickName    blank:      false
         firstName   nullable:   true
         lastName    nullable:   true
     }
