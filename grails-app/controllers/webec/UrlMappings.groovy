@@ -9,6 +9,7 @@ class UrlMappings {
             }
         }
 
+        "/teams"(resources:"teams")
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

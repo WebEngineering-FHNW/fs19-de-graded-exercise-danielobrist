@@ -5,8 +5,8 @@ class Team {
     String teamName
     int wins
     int losses
-    int goalsMadeCount
-    int goalsGottenCount
+    int goalsMade
+    int goalsGotten
 
     static hasMany = [members: Membership]
 
