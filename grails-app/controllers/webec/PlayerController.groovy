@@ -9,7 +9,7 @@ class PlayerController {
 
     def showPlayerTeams() {
         Player player = Player.findByFirstName("Daniel")
-        List<Team> teams = Team.findAll();
+        List<Team> teams = Team.findAllByMembers("Daniel");
         render text:"alle Teams von Daniel" + teams.toString()
     }
 }
