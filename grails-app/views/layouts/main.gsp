@@ -12,6 +12,7 @@
     <asset:stylesheet src="application.css"/>
 
     <g:layoutHead/>
+
 </head>
 <body>
 
@@ -31,6 +32,13 @@
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
                     <g:pageProperty name="page.nav" />
+                    <sec:ifLoggedIn>
+                        User: <sec:username/>
+                        <g:link controller="logout">Log out</g:link>
+                    </sec:ifLoggedIn>
+                    <sec:ifNotLoggedIn>
+                        <g:link controller="login">Log in</g:link>
+                    </sec:ifNotLoggedIn>
                 </ul>
             </div>
         </div>

@@ -8,7 +8,6 @@ class Player {
 
     static hasMany = [membership: Membership]
 
-
     @Override
     String toString() {
         if (firstName != null && lastName != null) {

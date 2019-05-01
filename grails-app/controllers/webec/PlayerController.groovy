@@ -6,10 +6,4 @@ import webec.SecRole
 @Secured(SecRole.ADMIN)
 class PlayerController {
     static scaffold = Player
-
-    def showPlayerTeams() {
-        Player player = Player.findByFirstName("Daniel")
-        List<Team> teams = Team.findAllByMembers("Daniel");
-        render text:"alle Teams von Daniel" + teams.toString()
-    }
 }
