@@ -6,7 +6,6 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class GameController {
 
-    def index() {
-    }
+    static scaffold = Game
 }
 

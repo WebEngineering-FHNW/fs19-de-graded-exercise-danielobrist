@@ -1,9 +1,11 @@
 package webec
 
+import java.awt.Label
+
 class Membership {
 
-    Player  player
-    Team    team
+    SecUser  player
+    Team     team
 
     static constraints = {
 

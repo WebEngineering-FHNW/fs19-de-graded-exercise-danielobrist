@@ -17,23 +17,35 @@ class BootStrap {
         SecUser administrator = save(new SecUser(username: 'admin', password: 'password'))
         SecUserSecRole.create(administrator, adminRole, true) //flush
 
-        SecUser user = save(new SecUser(username: 'user', password: 'password'))
+        SecUser user = save(new SecUser(username: 'Daniel', password: 'password'))
         SecUserSecRole.create(user, userRole, true)
 
-        Player daniel = save(new Player(firstName: "Daniel", lastName: "Obrist", nickName: "fanta"))
-
+        // generate a few test users
         for (int i = 0; i < 10; i++) {
-            save(new Player(firstName: "first" + i, lastName: "last" + i, nickName: "nickName" + i))
+            String usr = "first" + i
+            String pwd = "password" + i
+
+            SecUser testuser = save(new SecUser(username: usr, password: pwd))
+            SecUserSecRole.create(testuser, userRole, true)
         }
 
+        // generate a few test teams
         for (int i = 0; i < 10; i++) {
             save(new Team(teamName: "team" + i))
         }
 
+        // generate a few test games
+        for (int i = 0; i < 10; i++) {
+            save(new Game(playerOneHome: SecUser.first(),
+                          playerTwoHome: user,
+                          playerOneGuest: SecUser.last(),
+                          playerTwoGuest: administrator))
+        }
+
         // plausibility check
-        assert SecRole.count() == 2
-        assert SecUser.count() == 2
-        assert SecUserSecRole.count() == 2
+        // assert SecRole.count() == 2
+        // assert SecUser.count() == 2
+        // assert SecUserSecRole.count() == 2
 
     }
 

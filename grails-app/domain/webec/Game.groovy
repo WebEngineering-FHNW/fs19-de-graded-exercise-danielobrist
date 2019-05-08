@@ -2,10 +2,10 @@ package webec
 
 class Game {
 
-    Player playerOneHome;
-    Player playerTwoHome;
-    Player playerOneGuest;
-    Player playerTwoGuest;
+    SecUser playerOneHome;
+    SecUser playerTwoHome;
+    SecUser playerOneGuest;
+    SecUser playerTwoGuest;
     int scoreHomeTeam
     int scoreGuestTeam
 
