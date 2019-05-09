@@ -17,8 +17,8 @@ class BootStrap {
         SecUser administrator = save(new SecUser(username: 'admin', password: 'password'))
         SecUserSecRole.create(administrator, adminRole, true) //flush
 
-        SecUser user = save(new SecUser(username: 'Daniel', password: 'password'))
-        SecUserSecRole.create(user, userRole, true)
+        SecUser daniel = save(new SecUser(username: 'Daniel', password: 'password'))
+        SecUserSecRole.create(daniel, adminRole, true)
 
         // generate a few test users
         for (int i = 0; i < 10; i++) {
@@ -31,13 +31,15 @@ class BootStrap {
 
         // generate a few test teams
         for (int i = 0; i < 10; i++) {
-            save(new Team(teamName: "team" + i))
+            save(new Team(teamName: "team" + i, captain: administrator, wins: i))
         }
+
+        save(new Team(teamName: "DaniTeam", captain: daniel))
 
         // generate a few test games
         for (int i = 0; i < 10; i++) {
             save(new Game(playerOneHome: SecUser.first(),
-                          playerTwoHome: user,
+                          playerTwoHome: daniel,
                           playerOneGuest: SecUser.last(),
                           playerTwoGuest: administrator))
         }

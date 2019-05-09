@@ -8,6 +8,8 @@ class Team {
     int goalsMade
     int goalsGotten
 
+    SecUser captain
+
     static hasMany = [members: Membership]
 
     @Override
