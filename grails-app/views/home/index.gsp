@@ -1,21 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Daniel
-  Date: 2019-05-09
-  Time: 19:28
---%>
-
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title></title>
+    <meta name="layout" content="main"/>
+    <meta charset="UTF-8">
+    <asset:stylesheet src="application.css"/>
+    <title>Kicker Board</title>
 </head>
-
 <body>
-<div>
-    <g:each in="${topTen}" var="p">
-        <li>${p}</li>
-    </g:each>
+    <div id= firstrow class="row">
+<div class="column">
+    Top 10
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>Wins</th>
+        </tr>
+    <tr>
+        <g:each in="${topTen}">
+            <td>${it.teamName}</td>
+            <td>${it.wins}</td>
+            </tr>
+        </g:each>
+    </table>
+</div>
+<div class="column">
+    Submit new Game here
+
+</div>
 </div>
 </body>
 </html>

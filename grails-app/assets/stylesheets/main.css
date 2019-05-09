@@ -34,7 +34,7 @@ html * {
 
 body {
     background-color: #F5F5F5;
-    color: #333333;
+    color: #449d44;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
     -moz-box-shadow: 0 0 0.3em #424649;
     -webkit-box-shadow: 0 0 0.3em #424649;
@@ -84,7 +84,7 @@ img {
 }
 
 .footer {
-    background: #424649;
+    background: #449d44;
     color: #ffffff;
     clear: both;
     font-size: 0.8em;
@@ -571,4 +571,15 @@ a.skip {
 img.grails-logo {
     height:340px;
     margin-top:-10px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
