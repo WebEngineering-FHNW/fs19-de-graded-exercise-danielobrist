@@ -5,8 +5,8 @@ class Team {
     String teamName
     int wins
     int losses
-    int goalsMade
-    int goalsGotten
+    int totalGoalsMade
+    int totalGoalsGotten
 
     SecUser captain
 
@@ -18,6 +18,10 @@ class Team {
     }
 
     static constraints = {
-        teamName    blank:      false
+        teamName          blank: false, unique: true
+        wins              min: 0
+        losses            min: 0
+        totalGoalsMade    min: 0
+        totalGoalsGotten  min: 0
     }
 }

@@ -6,6 +6,9 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class GameController {
 
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
     static scaffold = Game
+
 }
 

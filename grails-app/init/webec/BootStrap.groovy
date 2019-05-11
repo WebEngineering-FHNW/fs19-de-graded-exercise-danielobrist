@@ -38,10 +38,12 @@ class BootStrap {
 
         // generate a few test games
         for (int i = 0; i < 10; i++) {
-            save(new Game(playerOneHome: SecUser.first(),
-                          playerTwoHome: daniel,
-                          playerOneGuest: SecUser.last(),
-                          playerTwoGuest: administrator))
+            save(new Game(homeTeam:  Team.last(),
+                          guestTeam:  Team.first(),
+                          scoreHomeTeam:  1,
+                          scoreGuestTeam: 10,
+                          date: new Date()
+            ))
         }
 
         // plausibility check

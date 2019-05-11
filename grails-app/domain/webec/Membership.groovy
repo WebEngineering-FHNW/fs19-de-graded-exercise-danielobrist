@@ -8,6 +8,5 @@ class Membership {
     Team     team
 
     static constraints = {
-
     }
 }

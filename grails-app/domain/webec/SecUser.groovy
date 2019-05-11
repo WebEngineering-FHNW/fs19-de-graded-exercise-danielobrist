@@ -18,6 +18,11 @@ class SecUser implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    @Override
+    String toString() {
+        return username
+    }
+
     Set<SecRole> getAuthorities() {
         (SecUserSecRole.findAllBySecUser(this) as List<SecUserSecRole>)*.secRole as Set<SecRole>
     }
