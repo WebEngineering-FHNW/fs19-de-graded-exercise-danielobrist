@@ -16,8 +16,8 @@
 </head>
 <body>
     <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="container-fluid">
+            <div class="navbar-header" id="controllers" role="navigation">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -28,7 +28,14 @@
 		    <asset:image src="soccerball.svg" alt="Kicker-Board Logo"/>
                 </a>
             </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+            <div class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav">
+                <li><a href="/game/index">Games</a></li>
+                <li><a href="/team/index">My Teams</a></li>
+                    <security:authorize access="hasRole('ROLE_USER')">
+                        <li><a href="/index">All Controllers</a></li>
+                    </security:authorize>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <g:pageProperty name="page.nav" />
                     <sec:ifLoggedIn>

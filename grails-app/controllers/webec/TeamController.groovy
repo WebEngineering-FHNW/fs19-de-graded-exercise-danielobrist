@@ -8,20 +8,12 @@ import grails.plugin.springsecurity.annotation.Secured
 class TeamController {
     static scaffold = Team
 
-    // TODO: not working yet
-    def showMyTeams() {
-        def springSecurityService
-        def user = springSecurityService.getPrincipal()
-        println(user.toString())
+    def springSecurityService
 
-        List teams = Team.findAllByCaptain(user)
-        List<Team> myTeams = teams*.teamName
-        render text: "Your teams: $myTeams"
-        [myTeams:myTeams]
+    // lists Teams where current user is captain
+    def index() {
+        def user = springSecurityService.currentUser
+        List<Team> teams = Team.findAllByCaptain(user)
+        [myTeamsList:teams]
     }
-
-    def getAll() {
-        List<Team> teams = Team.list()
-    }
-
 }
