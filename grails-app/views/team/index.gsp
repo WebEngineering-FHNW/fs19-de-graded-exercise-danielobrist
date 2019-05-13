@@ -16,9 +16,9 @@
                 <th>Wins</th>
             </tr>
         <tr>
-            <g:each in="${myTeamsList}">
-                <td>${it.teamName}</td>
-                <td>${it.wins}</td>
+            <g:each in="${userMemberships}">
+                <td>${it.team.teamName}</td>
+                <td>${it.team.wins}</td>
                 </tr>
             </g:each>
         </table>

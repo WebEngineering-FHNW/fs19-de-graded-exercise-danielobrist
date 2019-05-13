@@ -10,10 +10,10 @@ class TeamController {
 
     def springSecurityService
 
-    // lists Teams where current user is captain
+    // lists Teams where current user is member
     def index() {
         def user = springSecurityService.currentUser
-        List<Team> teams = Team.findAllByCaptain(user)
-        [myTeamsList:teams]
+        List<Membership> memberships = Membership.findAllByPlayer(user)
+        [userMemberships:memberships]
     }
 }
