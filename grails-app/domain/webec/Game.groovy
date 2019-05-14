@@ -2,8 +2,8 @@ package webec
 
 class Game {
 
-    Team    homeTeam
-    Team    guestTeam
+    Team    winner
+    Team    loser
     int scoreHomeTeam
     int scoreGuestTeam
     Date date

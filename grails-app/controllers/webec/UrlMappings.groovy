@@ -10,9 +10,8 @@ class UrlMappings {
         }
 
         "/game"(rescources:"game")
-        "/teams"(resources:"teams")
-        "/new"(resources:"newGame")
-        "/"(view:"/index")
+        "/team"(resources:"team")
+        "/"(resources:"home")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

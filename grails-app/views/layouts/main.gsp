@@ -31,10 +31,17 @@
             <div class="navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav navbar-nav">
                 <li><a href="/game/index">Games</a></li>
-                <li><a href="/team/index">My Teams</a></li>
-                    <security:authorize access="hasRole('ROLE_USER')">
-                        <li><a href="/index">All Controllers</a></li>
-                    </security:authorize>
+                <li><a href="/team/">My Teams</a></li>
+                    <li><div class="dropdown">
+                        <button class="dropbtn">All Controllers</button>
+                        <div class="dropdown-content">
+                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                        <a class="controller">
+                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
+                        </a>
+                    </g:each>
+                        </div>
+                    </div></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <g:pageProperty name="page.nav" />

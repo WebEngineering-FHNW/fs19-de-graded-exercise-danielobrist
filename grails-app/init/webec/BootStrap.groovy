@@ -34,17 +34,22 @@ class BootStrap {
             save(new Team(teamName: "team" + i, captain: administrator, wins: i))
         }
 
-        save(new Team(teamName: "DaniTeam", captain: daniel))
+        Team daniTeam = save(new Team(teamName: "DaniTeam", captain: daniel))
 
         // generate a few test games
         for (int i = 0; i < 10; i++) {
-            save(new Game(homeTeam:  Team.last(),
-                          guestTeam:  Team.first(),
+            save(new Game(winner:  Team.last(),
+                          loser:  Team.first(),
                           scoreHomeTeam:  1,
                           scoreGuestTeam: 10,
                           date: new Date()
             ))
         }
+
+        // generate a few memberships
+        save(new Membership(player: daniel, team: daniTeam))
+        save(new Membership(player: administrator, team: daniTeam))
+
 
         // plausibility check
         // assert SecRole.count() == 2

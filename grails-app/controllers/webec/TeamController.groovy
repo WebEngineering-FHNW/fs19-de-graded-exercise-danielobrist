@@ -9,6 +9,7 @@ class TeamController {
     static scaffold = Team
 
     def springSecurityService
+    def teamService
 
     // lists Teams where current user is member
     def index() {
@@ -16,4 +17,12 @@ class TeamController {
         List<Membership> memberships = Membership.findAllByPlayer(user)
         [userMemberships:memberships]
     }
+
+    def displayForm() {
+    }
+    def handleFormSubmit() {
+        def team = teamService.createTeam(params.teamName)
+        [team:team]
+    }
+
 }
