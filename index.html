@@ -1,1 +1,71 @@
-my project description as static html ...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project description</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 1.5em auto;
+        }
+        h1, h2, h3, h4 {
+            font-family: "Roboto", "Roboto light", sans-serif;
+        }
+        body, p {
+            font-family: "Arial", "Roboto", sans-serif;
+        }
+        footer {
+            position: relative;
+            padding-top: 8em
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1> Kickerboard - Project description</h1>
+    <p>
+        Kickerboard is a web application to manage teams and results from table football matches.
+        Users can log in and join one or multiple teams. Users can also submit new games.
+        A match involves always two teams and their respective scores, which can range from 0 to 10 goals.
+        The web application creates a leaderboard and dynamically displays
+        the top 10 champion teams, calculated by their total number of wins. It includes the following
+        functionalities
+    </p>
+    <ul>
+        <li>
+            Feature 1
+        </li>
+        <li>
+            Feature 2
+        </li>
+        <li>
+            Feature 3
+        </li>
+        <li>
+            Feature 4
+        </li>
+    </ul>
+    <p>
+        Feedback and ideas for further improvement are welcome. Please use the following form to submit your feedback.
+    </p>
+    <form action="mailto:danielobrist@students.fhnw.ch" method="post" enctype="text/plain">
+        <p>
+        Name: <input type="text" placeholder="Your name.."><br>
+        E-mail: <input type="text" placeholder="Your e-mail.."><br>
+        </p>
+        <p>
+        Feedback:<input type="text" name="Feedback" size="50">
+        <input type="submit" value="Send">
+        <input type="reset" value="Reset">
+        </p>
+    </form>
+    <footer>
+    <details>
+        <summary>Copyright Disclaimer</summary>
+        <p><small>Kickerboard - created in 2019 by Daniel Obrist. All Rights Reserved.</small></p>
+        <p><small>All content this web site is the property of Daniel Obrist.</small></p>
+    </details>
+    </footer>
+</div>
+</body>
+</html>
