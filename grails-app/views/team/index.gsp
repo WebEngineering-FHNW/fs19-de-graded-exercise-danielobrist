@@ -30,12 +30,7 @@
     </div>
 
     <div class="column">
-        Join new Team here
-        <g:form controller="team" action="save">
-            <label>Team</label>
-            <g:select name="team.teamName" from="${webec.Team.list()}"/>
-            <g:submitButton name="Join" value="save"/>
-        </g:form>
+        <a href="/membership/create">Join a Team</a>
     </div>
 </div>
 </body>

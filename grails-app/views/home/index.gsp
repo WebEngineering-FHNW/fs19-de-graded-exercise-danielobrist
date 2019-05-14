@@ -37,17 +37,16 @@
     </div>
 
     <div class="column">
-        Submit new Game here
+        <a href="/game/create">Submit a game</a>
         <g:form controller="game" action="save">
             <tmpl:upDownInput name="scoreHomeTeam" label="Home" value="0"/>
             <tmpl:upDownInput name="scoreGuestTeam" label="Guest" value="0"/>
             <label>Winner</label>
-            <g:select name="game.winner" from="${webec.Team.list()}"/>
+            <g:select name="winner" from="${webec.Team.list()}"/>
             <label>Loser</label>
-            <g:select name="game.loser" from="${webec.Team.list()}"/>
+            <g:select name="loser" from="${webec.Team.list()}"/>
             <div>
-                <label>Date</label>
-                <g:datePicker name="date" label="Date"/>
+                <g:hiddenField name="date"/>
             </div>
             <g:submitButton name="save" value="save"/>
         </g:form>

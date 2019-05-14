@@ -1,6 +1,7 @@
 package webec
 
 import grails.testing.web.controllers.ControllerUnitTest
+import grails.testing.gorm.DataTest
 import spock.lang.Specification
 
 class GameControllerSpec extends Specification implements ControllerUnitTest<GameController> {

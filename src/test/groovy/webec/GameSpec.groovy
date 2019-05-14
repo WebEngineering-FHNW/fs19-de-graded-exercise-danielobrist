@@ -1,18 +1,43 @@
 package webec
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.gorm.DataTest
 import spock.lang.Specification
 
-class GameSpec extends Specification implements DomainUnitTest<Game> {
+class GameSpec extends Specification implements DataTest {
+
+
+    static today = new Date().clearTime()
+
 
     def setup() {
+        mockDomain Team
+        mockDomain Game
+
+        Team homeTeam = new Team(teamName: "homeTeam", wins: 0, losses: 0, captain: "Dani").save(flush:true)
+        Team guestTeam = new Team(teamName: "guestTeam", wins: 0, losses: 0, captain: "Dani").save(flush:true)
+
     }
 
     def cleanup() {
+        homeTeam.delete()
+        guestTeam.delete()
+        game.delete()
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    // TODO: fix this test
+    void "Adding a win to winner team after a new game was submitted"() {
+        given:
+
+
+        when:
+        game = new Game(winner:  homeTeam,
+                loser:  guestTeam,
+                scoreHomeTeam:  10,
+                scoreGuestTeam: 1,
+                date: today).save(flush:true)
+
+        then:
+        assert homeTeam.wins == 1
+        assert guestTeam.wins == 0
     }
 }

@@ -18,11 +18,4 @@ class TeamController {
         [userMemberships:memberships]
     }
 
-    def displayForm() {
-    }
-    def handleFormSubmit() {
-        def team = teamService.createTeam(params.teamName)
-        [team:team]
-    }
-
 }
