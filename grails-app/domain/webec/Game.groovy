@@ -9,7 +9,9 @@ class Game {
     Date date
 
     static constraints = {
-        scoreHomeTeam     range:    0..10
-        scoreGuestTeam    range:    0..10
+        scoreHomeTeam     (range:    0..10, validator: {value, object ->
+            if (value > 10 || value < 0) return false })
+        scoreGuestTeam    (range:    0..10, validator: {value, object ->
+            if (value > 10 || value < 0) return false })
     }
 }

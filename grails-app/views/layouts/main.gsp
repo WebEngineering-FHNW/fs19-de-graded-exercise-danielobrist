@@ -56,8 +56,5 @@
 </div>
 </sec:ifLoggedIn>
 <g:layoutBody/>
-
-<asset:javascript src="application.js"/>
-
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="main"/>
     <meta charset="UTF-8">
-    <asset:stylesheet src="application.css"/>
+    <asset:stylesheet src="style.css"/>
     <title>Kicker Board</title>
     <script>
         function increase(valueName) {
@@ -19,37 +19,45 @@
 </head>
 
 <body>
-<div id=firstrow class="row">
-    <div class="column">
-        Top 10
-        <table>
-            <tr>
-                <th>Team</th>
-                <th>Wins</th>
-            </tr>
-            <g:each in="${topTen}">
-                <tr>
-                    <td>${it.teamName}</td>
-                    <td>${it.wins}</td>
-                </tr>
-            </g:each>
-        </table>
+<div id="firstrow" class="row">
+    <div id="firstcolumn" class="column">
+        <div class="card">
+            <div class="container">
+                <h1>Top 10</h1>
+                <table id="topten" class="table-hover">
+                    <tr>
+                        <th>Team</th>
+                        <th>Wins</th>
+                    </tr>
+                    <g:each in="${topTen}">
+                        <tr>
+                            <td>${it.teamName}</td>
+                            <td>${it.wins}</td>
+                        </tr>
+                    </g:each>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <div class="column">
-        <a href="/game/create">Submit a game</a>
-        <g:form controller="game" action="save">
-            <tmpl:upDownInput name="scoreHomeTeam" label="Home" value="0"/>
-            <tmpl:upDownInput name="scoreGuestTeam" label="Guest" value="0"/>
-            <label>Winner</label>
-            <g:select name="winner" from="${webec.Team.list()}"/>
-            <label>Loser</label>
-            <g:select name="loser" from="${webec.Team.list()}"/>
-            <div>
-                <g:hiddenField name="date"/>
+    <div id="secondcolumn" class="column">
+        <div class="card">
+            <div class="container">
+                <h1>New Game</h1>
+                <g:form class="form" controller="game" action="save">
+                    <tmpl:upDownInput class="form-control" name="scoreHomeTeam" label="Home" value="0"/>
+                    <tmpl:upDownInput class="form-control" name="scoreGuestTeam" label="Guest" value="0"/>
+                    <label>Winner</label>
+                    <g:select class="form-control" name="winner" from="${webec.Team.list()}"/>
+                    <label>Loser</label>
+                    <g:select class="form-control" name="loser" from="${webec.Team.list()}"/>
+                    <div>
+                        <g:hiddenField name="date"/>
+                    </div>
+                    <g:submitButton name="save" value="save"/>
+                </g:form>
             </div>
-            <g:submitButton name="save" value="save"/>
-        </g:form>
+        </div>
     </div>
 </div>
 </body>
