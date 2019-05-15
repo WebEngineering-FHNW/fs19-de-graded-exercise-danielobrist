@@ -35,11 +35,12 @@ class BootStrap {
         }
 
         Team daniTeam = save(new Team(teamName: "DaniTeam", captain: daniel))
+        Team badTeam = save(new Team(teamName: "VeryBadTeam", captain:administrator))
 
         // generate a few test games
         for (int i = 0; i < 10; i++) {
-            save(new Game(winner:  Team.last(),
-                          loser:  Team.first(),
+            save(new Game(winner:  daniTeam,
+                          loser:  badTeam,
                           scoreHomeTeam:  1,
                           scoreGuestTeam: 10,
                           date: new Date()

@@ -27,12 +27,12 @@
                 <table id="topten" class="table-hover">
                     <tr>
                         <th>Team</th>
-                        <th>Wins</th>
+                        <th>Points</th>
                     </tr>
                     <g:each in="${topTen}">
                         <tr>
                             <td>${it.teamName}</td>
-                            <td>${it.wins}</td>
+                            <td>${it.winLossRatio}</td>
                         </tr>
                     </g:each>
                 </table>
