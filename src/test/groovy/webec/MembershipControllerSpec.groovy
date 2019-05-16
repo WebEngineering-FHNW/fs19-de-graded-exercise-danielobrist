@@ -11,7 +11,7 @@ class MembershipControllerSpec extends Specification implements ControllerUnitTe
     def cleanup() {
     }
 
-    void "test something"() {
+    void ""() {
         expect:"fix me"
             true == false
     }

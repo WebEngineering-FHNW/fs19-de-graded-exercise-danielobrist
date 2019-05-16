@@ -7,7 +7,7 @@ class HomeController {
 
     // get the ten teams with the best win/loss ratio
     def index() {
-        List<Team> topTenList = Team.list(max: 10, sort: "winLossRatio", order: "desc")
+        List<Team> topTenList = Team.list(max: 10, sort: "wins", order: "desc")
         [topTen:topTenList]
     }
 }

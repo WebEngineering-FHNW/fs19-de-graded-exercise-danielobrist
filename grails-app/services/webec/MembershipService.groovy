@@ -8,7 +8,12 @@ class MembershipService {
     def addMembership(userid, team) {
         def targetTeam = Team.findByTeamName(team)
         def player = SecUser.findById(userid)
-        Membership membership = new Membership(player:player, team:targetTeam)
-        membership.save(flush:true)
+            // checks if the user is already in the selected team
+            if(!targetTeam.members.player.contains(player)) {
+                Membership membership = new Membership(player: player, team: targetTeam)
+                membership.save(flush: true)
+            } else {
+                throw new RuntimeException('You are already in this team!')
+            }
     }
 }

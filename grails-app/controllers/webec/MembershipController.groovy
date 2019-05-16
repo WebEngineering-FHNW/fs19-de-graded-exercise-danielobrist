@@ -10,19 +10,17 @@ class MembershipController {
     def springSecurityService
     def membershipService
 
-
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def create() {
-        def membership = new Membership(params)
-        SecUser user = springSecurityService.getCurrentUser()
-        Long userid = user.id
+        Long userid = springSecurityService.getCurrentUser().id
         String teamName = params.targetTeam
-        System.out.println(teamName)
-        System.out.println(user)
-        System.out.println(userid)
-
-        membershipService.addMembership(userid, teamName)
-
-        membership.save(flush: true)
+        try {
+            membershipService.addMembership(userid, teamName)
+        } catch (RuntimeException re) {
+            println re.message
+            flash.message = re.message
+            //TODO: return message to view somehow
+        }
         redirect(controller:"team", action: "index")
     }
 

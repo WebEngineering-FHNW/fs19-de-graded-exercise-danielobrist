@@ -32,7 +32,7 @@
                     <g:each in="${topTen}">
                         <tr>
                             <td>${it.teamName}</td>
-                            <td>${it.winLossRatio}</td>
+                            <td>${it.wins}</td>
                         </tr>
                     </g:each>
                 </table>
@@ -46,10 +46,12 @@
                 <h1>New Game</h1>
                 <g:form class="form" controller="game" action="save">
                     <label>Winner</label>
-                    <g:select class="form-control" name="winner" from="${webec.Team.list()}" noSelection="${["": 'Select winner...']}" required="true"/>
+                    <g:select class="form-control" name="winner" from="${webec.Team.list()}"
+                              noSelection="${["": 'Select winner...']}" required="true"/>
                     <tmpl:upDownInput class="form-control" name="scoreHomeTeam" label="Score" value="0"/>
                     <label>Loser</label>
-                    <g:select class="form-control" name="loser" from="${webec.Team.list()}" noSelection="${["": 'Select loser...']}" required="true"/>
+                    <g:select class="form-control" name="loser" from="${webec.Team.list()}"
+                              noSelection="${["": 'Select loser...']}" required="true"/>
                     <tmpl:upDownInput class="form-control" name="scoreGuestTeam" label="Score" value="0"/>
                     <div>
                         <g:hiddenField name="date"/>
