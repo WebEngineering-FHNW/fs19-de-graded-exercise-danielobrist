@@ -16,7 +16,7 @@
 <sec:ifLoggedIn>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header" id="controllers" role="navigation">
+        <div class="navbar-header" role="navigation">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -25,10 +25,10 @@
             </button>
         </div>
 
-        <div class="navbar-collapse collapse" aria-expanded="false">
+        <div class="navbar-collapse collapse" aria-expanded="false" role="navigation">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/team/">My Teams</a></li>
+                <li><a href="/team/index">My Teams</a></li>
                     <sec:ifAllGranted roles="ROLE_ADMIN">
                         <li><div class="dropdown">
                             <button class="dropbtn">All Controllers</button>
@@ -44,11 +44,11 @@
             <ul class="nav navbar-nav navbar-right">
                 <g:pageProperty name="page.nav"/>
                 <sec:ifLoggedIn>
-                    Hello <sec:username/>
-                    <g:link controller="logout">Log out</g:link>
+                    <li id="greeting"> Hello <sec:username/> </li>
+                    <li><g:link controller="logout">Log out</g:link> </li>
                 </sec:ifLoggedIn>
                 <sec:ifNotLoggedIn>
-                    <g:link controller="login">Log in</g:link>
+                    <li><g:link controller="login">Log in</g:link></li>
                 </sec:ifNotLoggedIn>
             </ul>
         </div>

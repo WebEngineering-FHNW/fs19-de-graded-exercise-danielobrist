@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="main"/>
     <meta charset="UTF-8">
-    <asset:stylesheet src="style.css"/>
+    <asset:stylesheet src="application.css"/>
     <title>Kicker Board</title>
 </head>
 
@@ -36,8 +36,13 @@
     <div id="secondcolumn" class="column">
         <div class="card">
             <div class="container">
-                <h1>New team</h1>
-                <a href="/team/create">Create a Team</a>
+                <h1>Join a team</h1>
+<g:form class="form" controller="membership" action="create">
+    <label>Join a Team</label>
+    <g:select class="form-control" name="targetTeam" from="${webec.Team.list()}" noSelection="${["": 'Select team to join...']}" required="true"/>
+
+    <g:submitButton name="join" value="Join"/>
+</g:form>
             </div>
         </div>
     </div>

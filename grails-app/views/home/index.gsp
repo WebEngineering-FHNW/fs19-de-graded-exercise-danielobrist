@@ -45,16 +45,16 @@
             <div class="container">
                 <h1>New Game</h1>
                 <g:form class="form" controller="game" action="save">
-                    <tmpl:upDownInput class="form-control" name="scoreHomeTeam" label="Home" value="0"/>
-                    <tmpl:upDownInput class="form-control" name="scoreGuestTeam" label="Guest" value="0"/>
                     <label>Winner</label>
-                    <g:select class="form-control" name="winner" from="${webec.Team.list()}"/>
+                    <g:select class="form-control" name="winner" from="${webec.Team.list()}" noSelection="${["": 'Select winner...']}" required="true"/>
+                    <tmpl:upDownInput class="form-control" name="scoreHomeTeam" label="Score" value="0"/>
                     <label>Loser</label>
-                    <g:select class="form-control" name="loser" from="${webec.Team.list()}"/>
+                    <g:select class="form-control" name="loser" from="${webec.Team.list()}" noSelection="${["": 'Select loser...']}" required="true"/>
+                    <tmpl:upDownInput class="form-control" name="scoreGuestTeam" label="Score" value="0"/>
                     <div>
                         <g:hiddenField name="date"/>
                     </div>
-                    <g:submitButton name="save" value="save"/>
+                    <g:submitButton name="save" value="Submit"/>
                 </g:form>
             </div>
         </div>
