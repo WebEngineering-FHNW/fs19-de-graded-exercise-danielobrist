@@ -37,12 +37,20 @@ class GameController {
         [gamesToConfirm:unconfirmedGamesLostByUser]
     }
 
+    //confirm selected game
     def confirm() {
-        //confirm selected game
+        Long gameId = params.gameId as Long
+        gameService.confirmGame(Long.valueOf(gameId))
+        flash.message = "Game confirmed!"
+        redirect(controller:"game", action: "confirmations")
     }
 
+    //refuse selected game - deletes it from db (should probably rework this in the future)
     def refuse() {
-        //refuse selected game
+        Long gameId = params.gameId as Long
+        gameService.refuseGame(gameId)
+        flash.message = "Game refused!"
+        redirect(controller:"game", action: "confirmations")
     }
 }
 
