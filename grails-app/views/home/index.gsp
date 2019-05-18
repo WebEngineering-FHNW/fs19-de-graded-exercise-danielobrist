@@ -8,12 +8,16 @@
     <script>
         function increase(valueName) {
             var input = document.getElementById(valueName);
-            input.value = parseInt(input.value) + 1;
+            if (input.value < 10) {
+                input.value = parseInt(input.value) + 1;
+            }
         }
 
         function decrease(valueName) {
             var input = document.getElementById(valueName);
-            input.value = parseInt(input.value) - 1;
+            if (input.value > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
         }
     </script>
 </head>
@@ -48,11 +52,11 @@
                     <label>Winner</label>
                     <g:select class="form-control" name="winner" from="${webec.Team.list()}"
                               noSelection="${["": 'Select winner...']}" required="true"/>
-                    <tmpl:upDownInput class="form-control" name="scoreHomeTeam" label="Score" value="0"/>
+                    <tmpl:upDownInput class="form-control" name="scoreWinner" label="Score" value="10" maxVal="10"/>
                     <label>Loser</label>
                     <g:select class="form-control" name="loser" from="${webec.Team.list()}"
                               noSelection="${["": 'Select loser...']}" required="true"/>
-                    <tmpl:upDownInput class="form-control" name="scoreGuestTeam" label="Score" value="0"/>
+                    <tmpl:upDownInput class="form-control" name="scoreLoser" label="Score" value="0" maxVal="9"/>
                     <div>
                         <g:hiddenField name="date"/>
                     </div>
