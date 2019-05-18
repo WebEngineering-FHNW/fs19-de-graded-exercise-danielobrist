@@ -5,9 +5,6 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class TeamService {
 
-    def membershipService
-    def springSecurityService
-
     def addWin(Team team) {
         def winsWinner = Team.findByTeamName(team).wins
         team.setWins(winsWinner+1)
@@ -18,8 +15,7 @@ class TeamService {
         team.setLosses(lossesLoser+1)
     }
 
-    Team createTeam(String teamName, SecUser captain) {
-        def springSecurityService
+    def createTeam(String teamName, SecUser captain) {
 
         boolean exists = Team.findAllByTeamName(teamName).teamName.contains(teamName)
 
@@ -31,18 +27,6 @@ class TeamService {
         }
         def teamToSave = new Team(teamName: teamName, wins: 0, losses: 0, captain: captain)
             teamToSave.save(flush: true)
-    }
-
-    // logic for generating number of wins depending on games played by the team
-    private int calculateWins(Team team) {
-        // TODO: logic for generating number of wins depending on games played by the team
-        return Game.findAllByWinner(team).count()
-    }
-
-    // logic for generating number of wins depending on games played by the team
-    private int calculateLosses(Team team) {
-        // TODO: logic for generating number of losses depending on games played by the team
-        return Game.findAllByLoser(team).count()
     }
 
     // unused

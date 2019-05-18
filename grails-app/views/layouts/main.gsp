@@ -29,7 +29,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li><a href="/team/index">Teams</a></li>
-                    <sec:ifAllGranted roles="ROLE_ADMIN">
+                <li><a href="/game/confirmations">Confirmations</a></li>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
                         <li><div class="dropdown">
                             <button class="dropbtn">All Controllers</button>
 

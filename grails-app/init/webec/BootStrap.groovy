@@ -45,9 +45,10 @@ class BootStrap {
         for (int i = 0; i < 10; i++) {
             save(new Game(winner:  daniTeam,
                           loser:  badTeam,
-                          scoreHomeTeam:  1,
-                          scoreLoser: 10,
-                          date: new Date()
+                          scoreWinner:  10,
+                          scoreLoser: 3,
+                          date: new Date(),
+                          confirmed: false
             ))
         }
 

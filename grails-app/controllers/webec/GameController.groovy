@@ -6,6 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class GameController {
 
     def gameService
+    def springSecurityService
 
     static scaffold = Game
 
@@ -27,6 +28,21 @@ class GameController {
             flash.error = re.message
         }
         redirect(controller:"home", action: "index")
+    }
+
+    // lists all games a team lost for confirmation by the losing team
+    def confirmations() {
+        def user = springSecurityService.currentUser
+        List <Game> unconfirmedGamesLostByUser = gameService.listUnconfirmedGamesOfUser(user)
+        [gamesToConfirm:unconfirmedGamesLostByUser]
+    }
+
+    def confirm() {
+        //confirm selected game
+    }
+
+    def refuse() {
+        //refuse selected game
     }
 }
 

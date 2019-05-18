@@ -27,7 +27,7 @@
                             <td>${it.team.wins}</td>
                             <td><g:link controller="membership" action="leaveTeam"
                                         params="[teamName: it.team.teamName]"><span class="closebtn"
-                                                                                    onclick="return confirm('Are you sure?')">&times;</span></g:link>
+                                                                                    onclick="return confirm('Are you sure you want to leave ${it.team.teamName}?')">&#10008;</span></g:link>
                             </td>
                         </tr>
                     </g:each>
@@ -41,7 +41,6 @@
         <div class="card">
             <h1>Join a team</h1>
             <g:form class="form" controller="membership" action="create">
-                <label>Join a Team</label>
                 <g:select class="form-control" name="targetTeam" from="${webec.Team.list()}"
                           noSelection="${['null': 'Select team to join...']}" required="true"/>
                 <g:submitButton name="join" value="Join"/>

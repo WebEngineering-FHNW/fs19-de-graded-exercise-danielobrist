@@ -7,6 +7,7 @@ class Game {
     int     scoreWinner
     int     scoreLoser
     Date    date
+    boolean confirmed
 
     static constraints = {
         scoreWinner   range:    0..10

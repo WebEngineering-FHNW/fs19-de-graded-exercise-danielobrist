@@ -7,7 +7,7 @@ class GameService {
 
     def teamService
 
-    Team createGame(String winnerName, String loserName, int scoreWinner, int scoreLoser) {
+    def createGame(String winnerName, String loserName, int scoreWinner, int scoreLoser) {
 
         Team winnerTeam = Team.findByTeamName(winnerName)
         Team loserTeam = Team.findByTeamName(loserName)
@@ -24,12 +24,19 @@ class GameService {
             throw new RuntimeException("You can't play table football against yourself!")
         }
 
-        def gameToSave = new Game(winner: winnerTeam, loser: loserTeam, scoreHomeTeam: scoreWinner, scoreLoser: scoreLoser, date:new Date())
+        def gameToSave = new Game(winner: winnerTeam, loser: loserTeam, scoreHomeTeam: scoreWinner, scoreLoser: scoreLoser, date: new Date(), confirmed: false)
         gameToSave.save(flush: true)
 
+        // TODO: put this after game confirmation
         teamService.addWin(winnerTeam)
         teamService.addLoss(loserTeam)
         winnerTeam.save(flush: true)
         loserTeam.save(flush: true)
+    }
+
+    List<Game> listUnconfirmedGamesOfUser(SecUser user) {
+        List<Team> teamsOfUser = Membership.findAllByPlayer(user).team
+        List<Game> gamesLostByUser = Game.findAllByLoserInListAndConfirmed(teamsOfUser, false)
+        return gamesLostByUser
     }
 }
