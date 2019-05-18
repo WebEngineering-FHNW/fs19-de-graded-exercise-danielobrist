@@ -12,6 +12,14 @@ class GameService {
         Team winnerTeam = Team.findByTeamName(winnerName)
         Team loserTeam = Team.findByTeamName(loserName)
 
+        if (winnerTeam == null) {
+            throw new RuntimeException("Please select a winner.")
+        }
+
+        if (loserTeam == null) {
+            throw new RuntimeException("Please select a loser.")
+        }
+
         if (winnerTeam == loserTeam) {
             throw new RuntimeException("You can't play table football against yourself!")
         }

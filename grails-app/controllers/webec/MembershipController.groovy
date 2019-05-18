@@ -24,4 +24,18 @@ class MembershipController {
         redirect(controller:"team", action: "index")
     }
 
+    @Secured([SecRole.ADMIN, SecRole.USER])
+    def leaveTeam() {
+        Long userid = springSecurityService.getCurrentUser().id
+        String teamName = params.teamName
+        try {
+            membershipService.removeMembership(teamName, userid)
+            flash.message = "You left ${teamName}."
+        } catch (RuntimeException re) {
+            println re.message
+            flash.error = re.message
+        }
+        redirect(controller:"team", action: "index")
+    }
+
 }

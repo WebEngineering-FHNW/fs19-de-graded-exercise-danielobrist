@@ -31,7 +31,7 @@ class TeamController {
     }
 
     // calculate win-loss-ratio
-    def winLossRatio(Team team) {
+    def winLossRatio() {
         //TODO: calculate ratio via service and pass it to view
     }
 

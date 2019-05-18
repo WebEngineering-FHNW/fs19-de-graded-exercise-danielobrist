@@ -25,6 +25,10 @@
                         <tr>
                             <td>${it.team.teamName}</td>
                             <td>${it.team.wins}</td>
+                            <td><g:link controller="membership" action="leaveTeam"
+                                        params="[teamName: it.team.teamName]"><span class="closebtn"
+                                                                                    onclick="return confirm('Are you sure?')">&times;</span></g:link>
+                            </td>
                         </tr>
                     </g:each>
                     </tbody>
@@ -35,14 +39,15 @@
 
     <div id="secondcolumn" class="column">
         <div class="card">
-                <h1>Join a team</h1>
-                <g:form class="form" controller="membership" action="create">
-                    <label>Join a Team</label>
-                    <g:select class="form-control" name="targetTeam" from="${webec.Team.list()}"
-                              noSelection="${["": 'Select team to join...']}" required="true"/>
-                    <g:submitButton name="join" value="Join"/>
-                </g:form>
-            </div>
+            <h1>Join a team</h1>
+            <g:form class="form" controller="membership" action="create">
+                <label>Join a Team</label>
+                <g:select class="form-control" name="targetTeam" from="${webec.Team.list()}"
+                          noSelection="${['null': 'Select team to join...']}" required="true"/>
+                <g:submitButton name="join" value="Join"/>
+            </g:form>
+        </div>
+
         <div class="card">
             <h1>Create a team</h1>
             <g:form class="form" controller="team" action="create">
@@ -51,8 +56,8 @@
                 <g:submitButton name="create" value="Create"/>
             </g:form>
         </div>
-        </div>
     </div>
+</div>
 </div>
 </body>
 </html>
