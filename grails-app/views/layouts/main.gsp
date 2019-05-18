@@ -55,6 +55,18 @@
     </div>
 </div>
 </sec:ifLoggedIn>
+<g:if test="${flash.message}">
+    <div class="alert-success">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        ${flash.message}
+    </div>
+</g:if>
+<g:if test="${flash.error}">
+    <div class="alert-danger">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        ${flash.error}
+    </div>
+</g:if>
 <g:layoutBody/>
 </body>
 </html>

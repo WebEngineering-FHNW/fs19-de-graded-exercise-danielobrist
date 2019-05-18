@@ -15,15 +15,18 @@ class TeamService {
         team.setLosses(lossesLoser+1)
     }
 
-    //TODO: finish this
-    Team createTeam(String teamName) {
-        Team team = new Team()
-        team.teamName = teamName
-        team.wins = calculateWins(team)
-        team.losses = calculateLosses(team)
+    Team createTeam(String teamName, SecUser captain) {
+        boolean exists = Team.findAllByTeamName(teamName).teamName.contains(teamName)
+        println(exists)
 
-        team.save()
-        return team
+        if (exists) {
+            throw new RuntimeException('This name is already taken!')
+        }
+        if (teamName == "") {
+            throw new RuntimeException('Please enter a valid name.')
+        }
+        def teamToSave = new Team(teamName: teamName, wins: 0, losses: 0, captain: captain)
+            teamToSave.save(flush: true)
     }
 
     // logic for generating number of wins depending on games played by the team

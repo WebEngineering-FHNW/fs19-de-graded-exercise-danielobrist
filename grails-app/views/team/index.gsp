@@ -12,7 +12,7 @@
     <div id="firstcolumn" class="column">
         <div class="card">
             <div class="container">
-                <h1>My Teams</h1>
+                <h1>My Memberships</h1>
                 <table>
                     <thead>
                     <tr>
@@ -35,7 +35,6 @@
 
     <div id="secondcolumn" class="column">
         <div class="card">
-            <div class="container">
                 <h1>Join a team</h1>
                 <g:form class="form" controller="membership" action="create">
                     <label>Join a Team</label>
@@ -44,6 +43,14 @@
                     <g:submitButton name="join" value="Join"/>
                 </g:form>
             </div>
+        <div class="card">
+            <h1>Create a team</h1>
+            <g:form class="form" controller="team" action="create">
+                <label>Team name</label>
+                <g:textField name="teamName" label="Team name"/>
+                <g:submitButton name="create" value="Create"/>
+            </g:form>
+        </div>
         </div>
     </div>
 </div>

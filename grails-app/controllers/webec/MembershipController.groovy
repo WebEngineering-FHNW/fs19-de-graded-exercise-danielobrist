@@ -16,10 +16,10 @@ class MembershipController {
         String teamName = params.targetTeam
         try {
             membershipService.addMembership(userid, teamName)
+            flash.message = "Successfully joined team!"
         } catch (RuntimeException re) {
             println re.message
-            flash.message = re.message
-            //TODO: return message to view somehow
+            flash.error = re.message
         }
         redirect(controller:"team", action: "index")
     }
