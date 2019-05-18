@@ -22,7 +22,7 @@ class TeamController {
         SecUser captain = user
         try {
             teamService.createTeam(teamName, captain)
-            flash.message = "Successfully created team ${teamName}"
+            flash.message = "Successfully created team «${teamName}»"
         } catch (RuntimeException re) {
             println re.message
             flash.error = re.message

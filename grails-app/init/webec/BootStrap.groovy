@@ -46,7 +46,7 @@ class BootStrap {
             save(new Game(winner:  daniTeam,
                           loser:  badTeam,
                           scoreHomeTeam:  1,
-                          scoreGuestTeam: 10,
+                          scoreLoser: 10,
                           date: new Date()
             ))
         }

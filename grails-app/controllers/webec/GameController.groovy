@@ -5,24 +5,27 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(SecRole.ADMIN)
 class GameController {
 
-    def teamService
+    def gameService
 
     static scaffold = Game
 
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def save() {
-        def game = new Game(params)
-        def winner = params.winner
-        def loser = params.loser
+        String winner = params.winner
+        String loser = params.loser
+        int scoreWinner = params.scoreWinner.toInteger()
+        int scoreLoser =  params.scoreLoser.toInteger()
 
-        Team winnerTeam = Team.findByTeamName(winner)
-        Team loserTeam = Team.findByTeamName(loser)
-
-        teamService.addWin(winnerTeam)
-        teamService.addLoss(loserTeam)
-
-        game.save(flush: true)
-        winnerTeam.save(flush: true)
-        loserTeam.save(flush: true)
+        try {
+            gameService.createGame(winner, loser, scoreWinner, scoreLoser)
+            if(scoreLoser == 0) {
+                flash.message = "Game saved! Wow! ${loser} literally got destroyed by ${winner}!"
+            } else {
+                flash.message = "Game saved! ${winner} defeated ${loser} with a score of ${scoreWinner}:${scoreLoser}!"
+            }
+        } catch (RuntimeException re) {
+            flash.error = re.message
+        }
         redirect(controller:"home", action: "index")
     }
 }

@@ -33,7 +33,7 @@ class GameSpec extends Specification implements DataTest {
         game = new Game(winner:  homeTeam,
                 loser:  guestTeam,
                 scoreHomeTeam:  10,
-                scoreGuestTeam: 1,
+                scoreLoser: 1,
                 date: today).save(flush:true)
 
         then:

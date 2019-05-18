@@ -5,6 +5,9 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class TeamService {
 
+    def membershipService
+    def springSecurityService
+
     def addWin(Team team) {
         def winsWinner = Team.findByTeamName(team).wins
         team.setWins(winsWinner+1)
@@ -16,8 +19,9 @@ class TeamService {
     }
 
     Team createTeam(String teamName, SecUser captain) {
+        def springSecurityService
+
         boolean exists = Team.findAllByTeamName(teamName).teamName.contains(teamName)
-        println(exists)
 
         if (exists) {
             throw new RuntimeException("The name ${teamName} is already taken!")
