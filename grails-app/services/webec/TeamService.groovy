@@ -20,7 +20,7 @@ class TeamService {
         println(exists)
 
         if (exists) {
-            throw new RuntimeException('This name is already taken!')
+            throw new RuntimeException("The name ${teamName} is already taken!")
         }
         if (teamName == "") {
             throw new RuntimeException('Please enter a valid name.')

@@ -13,7 +13,7 @@ class MembershipService {
                 Membership membership = new Membership(player: player, team: targetTeam)
                 membership.save(flush: true)
             } else {
-                throw new RuntimeException('You are already in this team!')
+                throw new RuntimeException("You are already a member of ${targetTeam}!")
             }
     }
 }
