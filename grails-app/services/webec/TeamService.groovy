@@ -5,6 +5,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class TeamService {
 
+    List<Team> topTen() {
+        return Team.list(max: 10, sort: "wins", order: "desc")
+    }
+
     def addWin(Team team) {
         def winsWinner = Team.findByTeamName(team).wins
         team.setWins(winsWinner+1)

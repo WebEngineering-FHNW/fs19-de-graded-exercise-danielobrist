@@ -5,9 +5,11 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured([SecRole.ADMIN, SecRole.USER])
 class HomeController {
 
-    // get the ten teams with the best win/loss ratio
+    TeamService teamService
+
+    // get the ten teams with the best most points
     def index() {
-        List<Team> topTenList = Team.list(max: 10, sort: "wins", order: "desc")
+        List<Team> topTenList = teamService.topTen()
         [topTen:topTenList]
     }
 }
