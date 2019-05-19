@@ -22,29 +22,42 @@
 </head>
 <body>
 <div>
-    <h1> Kickerboard - Project description</h1>
+    <h1>Kickerboard - Project description</h1>
     <p>
         Kickerboard is a web application to manage teams and results from table football matches.
         Users can log in and join one or multiple teams. Users can also submit new games.
         A match involves always two teams and their respective scores, which can range from 0 to 10 goals.
         The web application creates a leaderboard and dynamically displays
-        the top 10 champion teams, calculated by their total number of wins. It includes the following
-        functionalities
+        the top 10 champion teams, calculated by their total number of wins and losses. A win gives 1 point, a loss deduces 1 point.
+        It includes the following functionalities:
     </p>
     <ul>
         <li>
-            Feature 1
+            Creating teams: a user can create his own team, where he is the captain of
         </li>
         <li>
-            Feature 2
+            Deleting teams: the captain of a team can delete his own teams at will
         </li>
         <li>
-            Feature 3
+            Joining teams: each user can join other teams. At the moment there is no limit and no confirmation needed
         </li>
         <li>
-            Feature 4
+            Submitting games: each user can submit a game they played by selecting the winner, loser and the respecitve
+            scores
+        </li>
+        <li>
+            Confirming games: after a game is submitted, it has to be confirmed by the captain of the loser team to be valid
+        </li>
+        <li>
+            Top ten: a leaderboard on the home view of the application shows the 10 best teams
+        </li>
+        <li>
+            Role based security: a secured access for admins is provided with additional debug navigation menu item
         </li>
     </ul>
+    <p>
+        Sadly, time and resources limited the development.
+    </p>
     <p>
         Feedback and ideas for further improvement are welcome. Please use the following form to submit your feedback.
     </p>
