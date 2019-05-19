@@ -2,7 +2,7 @@ package webec
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(SecRole.ADMIN)
+@Secured([SecRole.ADMIN, SecRole.USER])
 class GameController {
 
     def gameService
@@ -20,9 +20,9 @@ class GameController {
         try {
             gameService.createGame(winner, loser, scoreWinner, scoreLoser)
             if(scoreLoser == 0) {
-                flash.message = "Game saved! Wow! ${loser} literally got destroyed by ${winner}!"
+                flash.message = "Game submitted for confirmation! Wow! ${loser} literally got destroyed by ${winner}!"
             } else {
-                flash.message = "Game saved! ${winner} defeated ${loser} with a score of ${scoreWinner}:${scoreLoser}!"
+                flash.message = "Game submitted for confirmation! ${winner} defeated ${loser} with a score of ${scoreWinner}:${scoreLoser}!"
             }
         } catch (RuntimeException re) {
             flash.error = re.message

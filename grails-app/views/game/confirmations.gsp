@@ -40,7 +40,7 @@
                         </tbody>
                     </table>
                 </g:if>
-                <g:if test="${gamesToConfirm.size() == 0}">No games to confirm, please come back later.</g:if>
+                <g:if test="${gamesToConfirm.size() == 0}">No games to confirm right now, please come back later. Only the captain of a team can confirm games.</g:if>
             </div>
         </div>
     </div>

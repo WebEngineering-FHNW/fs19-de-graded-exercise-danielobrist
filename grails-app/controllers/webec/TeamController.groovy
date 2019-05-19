@@ -9,11 +9,13 @@ class TeamController {
     def springSecurityService
     def teamService
 
+
     // lists Teams where current user is member
     def index() {
         def user = springSecurityService.currentUser
         List<Membership> memberships = Membership.findAllByPlayer(user)
-        [userMemberships:memberships]
+        List<Team> teamsCaptainOf = Team.findAllByCaptain(user)
+        [userMemberships:memberships, teamsCaptainOf:teamsCaptainOf]
     }
 
     def create() {
@@ -27,6 +29,13 @@ class TeamController {
             println re.message
             flash.error = re.message
         }
+        redirect(controller:"team", action: "index")
+    }
+
+    def delete () {
+        def teamToDelete = Team.findByTeamName(params.teamName)
+        teamToDelete.delete(flush: true)
+        flash.message= "Successfully deleted team «${teamToDelete}»"
         redirect(controller:"team", action: "index")
     }
 

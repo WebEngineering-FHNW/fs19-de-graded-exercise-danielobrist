@@ -28,9 +28,10 @@ class GameService {
         gameToSave.save(flush: true)
     }
 
+    // returns list of lost games where current user is captain
     List<Game> listUnconfirmedGamesOfUser(SecUser user) {
-        List<Team> teamsOfUser = Membership.findAllByPlayer(user).team
-        List<Game> gamesLostByUser = Game.findAllByLoserInListAndConfirmed(teamsOfUser, false)
+        List<Team> teamsCaptainOf = Team.findAllByCaptain(user)
+        List<Game> gamesLostByUser = Game.findAllByLoserInListAndConfirmed(teamsCaptainOf, false)
         return gamesLostByUser
     }
 

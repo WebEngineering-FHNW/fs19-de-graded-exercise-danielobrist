@@ -57,9 +57,9 @@
                     <g:select class="form-control" name="loser" from="${webec.Team.list()}"
                               noSelection="${['null': 'Select loser...']}" required="true"/>
                     <tmpl:upDownInput class="form-control" name="scoreLoser" label="Score" value="0" maxVal="9"/>
-                    <div>
-                        <g:hiddenField name="date"/>
-                    </div>
+
+                    <g:hiddenField name="date"/>
+
                     <g:submitButton name="save" value="Submit"/>
                 </g:form>
             </div>

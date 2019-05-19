@@ -35,6 +35,31 @@
                 </table>
             </div>
         </div>
+        <div class="card">
+            <div class="container">
+                <h1>Teams founded by <sec:username/></h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Wins</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <g:each in="${teamsCaptainOf}">
+                        <tr>
+                            <td>${it.teamName}</td>
+                            <td>${it.wins}</td>
+                            <td><g:link controller="team" action="delete"
+                                        params="[teamName: it.teamName]"><span class="closebtn"
+                                                                                    onclick="return confirm('Are you sure you want to delete ${it.teamName}?')">&#x1F5D1;</span></g:link>
+                            </td>
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="secondcolumn" class="column">
