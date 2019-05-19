@@ -5,12 +5,6 @@ import grails.testing.services.ServiceUnitTest
 
 class GameServiceSpec extends HibernateSpec implements ServiceUnitTest<GameService>{
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
     List<Class> getDomainClasses() { [SecUser, Team, Game]}
 
     def "test listing of unconfirmed games with listUnconfirmedGamesOfUser service"() {
@@ -58,7 +52,7 @@ class GameServiceSpec extends HibernateSpec implements ServiceUnitTest<GameServi
         when:'listUnconfirmedGamesOfUser is called'
         List<Game> games = service.listUnconfirmedGamesOfUser(currentUser)
 
-        then: 'unconfirmed games are found where user is captain of loser team'
+        then: 'only unconfirmed games are found where the user is captain of loser team'
         games.size() == 1
         games[0].loser.teamName == 'team1'
         games[0].winner.teamName == 'team2'
