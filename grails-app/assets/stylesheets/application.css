@@ -91,6 +91,7 @@ h1 {
     transition: 0.3s;
     background: #e7e7e7;
     border-radius: 5px;
+    margin-top: 16px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -100,8 +101,8 @@ h1 {
 
 /* Add some padding inside the card container */
 .container {
-    padding: 2px 16px;
-    height: 500px;
+    padding-bottom: 16px;
+    height: fit-content;
 }
 
 input[type=button] {
