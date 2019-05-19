@@ -51,11 +51,11 @@
                 <g:form class="form" controller="game" action="save">
                     <label>Winner</label>
                     <g:select class="form-control" name="winner" from="${webec.Team.list()}"
-                              noSelection="${['null': 'Select winner...']}" required="true"/>
+                              noSelection="${['null': 'Select winner...']}"/>
                     <tmpl:upDownInput class="form-control" name="scoreWinner" label="Score" value="10" maxVal="10"/>
                     <label>Loser</label>
                     <g:select class="form-control" name="loser" from="${webec.Team.list()}"
-                              noSelection="${['null': 'Select loser...']}" required="true"/>
+                              noSelection="${['null': 'Select loser...']}"/>
                     <tmpl:upDownInput class="form-control" name="scoreLoser" label="Score" value="0" maxVal="9"/>
 
                     <g:hiddenField name="date"/>

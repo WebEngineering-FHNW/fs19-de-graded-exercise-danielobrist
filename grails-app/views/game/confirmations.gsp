@@ -20,6 +20,8 @@
                             <th>Winner</th>
                             <th>Loser</th>
                             <th>Score</th>
+                            <th>Confirm</th>
+                            <th>Decline</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +49,6 @@
 
     <div id="secondcolumn" class="column">
     </div>
-</div>
 </div>
 </body>
 </html>

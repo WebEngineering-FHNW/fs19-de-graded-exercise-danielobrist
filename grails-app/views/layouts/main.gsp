@@ -32,7 +32,7 @@
                 <li><a href="/game/confirmations">Confirmations</a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
                         <li><div class="dropdown">
-                            <button class="dropbtn">All Controllers</button>
+                            <button class="dropbtn">Controllers for debugging</button>
 
                             <div class="dropdown-content">
                                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">

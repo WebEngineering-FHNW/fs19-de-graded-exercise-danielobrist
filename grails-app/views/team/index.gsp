@@ -18,6 +18,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Wins</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Wins</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,7 +71,7 @@
                 <h1>Join a team</h1>
                 <g:form class="form" controller="membership" action="create">
                     <g:select class="form-control" name="targetTeam" from="${webec.Team.list()}"
-                              noSelection="${['null': 'Select team to join...']}" required="true"/>
+                              noSelection="${['null': 'Select team to join...']}"/>
                     <g:submitButton name="join" value="Join"/>
                 </g:form>
             </div>
@@ -80,13 +82,12 @@
                 <h1>Create a team</h1>
                 <g:form class="form" controller="team" action="create">
                     <label>Team name</label>
-                    <g:textField name="teamName" label="Team name"/>
+                    <g:textField name="teamName"/>
                     <g:submitButton name="create" value="Create"/>
                 </g:form>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
