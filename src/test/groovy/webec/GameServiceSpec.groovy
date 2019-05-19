@@ -11,6 +11,8 @@ class GameServiceSpec extends HibernateSpec implements ServiceUnitTest<GameServi
     def cleanup() {
     }
 
+    List<Class> getDomainClasses() { [SecUser, Team, Game]}
+
     def "test listing of unconfirmed games with listUnconfirmedGamesOfUser service"() {
         when: 'Users, teams and games are stored in db'
         SecUser currentUser = new SecUser(username: 'user', password: 'pw').save()
