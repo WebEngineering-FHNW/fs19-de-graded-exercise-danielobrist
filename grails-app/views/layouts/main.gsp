@@ -28,7 +28,7 @@
         <div class="navbar-collapse collapse" aria-expanded="false" role="navigation">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/team/manage">Teams</a></li>
+                <li><a href="/team/manage.gsp">Teams</a></li>
                 <li><a href="/game/confirmations">Confirmations</a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
                         <li><div class="dropdown">
