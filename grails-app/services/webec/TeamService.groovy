@@ -10,13 +10,17 @@ class TeamService {
     }
 
     def addWin(Team team) {
-        def winsWinner = Team.findByTeamName(team).wins
-        team.setWins(winsWinner + 1)
+        if (team != null) {
+            def winsWinner = Team.findByTeamName(team).wins
+            team.setWins(winsWinner + 1)
+        }
     }
 
     def addLoss(Team team) {
-        def lossesLoser = Team.findByTeamName(team).losses
-        team.setLosses(lossesLoser + 1)
+        if (team != null) {
+            def lossesLoser = Team.findByTeamName(team).losses
+            team.setLosses(lossesLoser + 1)
+        }
     }
 
     def calculateWinLossRatio(Team team) {

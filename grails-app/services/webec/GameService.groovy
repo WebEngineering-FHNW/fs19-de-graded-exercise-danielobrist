@@ -24,6 +24,10 @@ class GameService {
             throw new RuntimeException("You can't play table football against yourself!")
         }
 
+        if (scoreWinner <= scoreLoser) {
+            throw new RuntimeException("Winner score has to be higher than loser score.")
+        }
+
         def gameToSave = new Game(winner: winnerTeam, loser: loserTeam, scoreWinner: scoreWinner, scoreLoser: scoreLoser, date: new Date(), confirmed: false)
         gameToSave.save(flush: true)
     }

@@ -12,14 +12,14 @@ class GameController {
 
     @Secured([SecRole.ADMIN, SecRole.USER])
     def save() {
-        String winner = params.winner
-        String loser = params.loser
-        int scoreWinner = params.scoreWinner.toInteger()
-        int scoreLoser =  params.scoreLoser.toInteger()
-
         try {
+            String winner = params.winner
+            String loser = params.loser
+            int scoreWinner = params.scoreWinner.toInteger()
+            int scoreLoser = params.scoreLoser.toInteger()
+
             gameService.createGame(winner, loser, scoreWinner, scoreLoser)
-            if(scoreLoser == 0) {
+            if (scoreLoser == 0) {
                 flash.message = "Game submitted for confirmation! Wow! ${loser} literally got destroyed by ${winner}!"
             } else {
                 flash.message = "Game submitted for confirmation! ${winner} defeated ${loser} with a score of ${scoreWinner}:${scoreLoser}!"
@@ -27,14 +27,14 @@ class GameController {
         } catch (RuntimeException re) {
             flash.error = re.message
         }
-        redirect(controller:"home", action: "index")
+        redirect(controller: "home", action: "index")
     }
 
     // lists all games a team lost for confirmation by the losing team
     def confirmations() {
         def user = springSecurityService.currentUser
-        List <Game> unconfirmedGamesLostByUser = gameService.listUnconfirmedGamesOfUser(user)
-        [gamesToConfirm:unconfirmedGamesLostByUser]
+        List<Game> unconfirmedGamesLostByUser = gameService.listUnconfirmedGamesOfUser(user)
+        [gamesToConfirm: unconfirmedGamesLostByUser]
     }
 
     //confirm selected game
@@ -42,7 +42,7 @@ class GameController {
         Long gameId = params.gameId as Long
         gameService.confirmGame(Long.valueOf(gameId))
         flash.message = "Game confirmed!"
-        redirect(controller:"game", action: "confirmations")
+        redirect(controller: "game", action: "confirmations")
     }
 
     //refuse selected game - deletes it from db (should probably rework this in the future)
@@ -50,7 +50,7 @@ class GameController {
         Long gameId = params.gameId as Long
         gameService.refuseGame(gameId)
         flash.message = "Game refused!"
-        redirect(controller:"game", action: "confirmations")
+        redirect(controller: "game", action: "confirmations")
     }
 }
 
