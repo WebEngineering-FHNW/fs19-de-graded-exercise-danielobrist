@@ -12,6 +12,8 @@ class Game {
     static constraints = {
         scoreWinner   range:    0..10
         scoreLoser    range:    0..10
+        winner        nullable: true, blank: true
+        loser         nullable: true, blank: true
     }
 
     Team getWinner() {

@@ -33,6 +33,19 @@ class TeamService {
             teamToSave.save(flush: true)
     }
 
+    def cleanUp(Team teamToDelete) {
+        def gameWinsOfTeam = Game.findAllByWinner(teamToDelete)
+        def gameLossesOfTeam = Game.findAllByLoser(teamToDelete)
+        def memberships = Membership.findAllByTeam(teamToDelete)
+
+        gameWinsOfTeam.each { game -> game.winner = null }
+        gameLossesOfTeam.each { game -> game.loser = null }
+        gameWinsOfTeam.each { game -> game.save(flush: true)}
+        gameLossesOfTeam.each { game -> game.save(flush: true)}
+
+        memberships.each { mem -> mem.delete(flush: true)}
+    }
+
     // unused
     // determines if a user is the captain of a team
     def isCaptain(SecUser me, Team team) {

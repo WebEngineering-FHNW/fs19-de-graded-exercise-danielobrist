@@ -34,6 +34,7 @@ class TeamController {
     def delete () {
         def teamToDelete = Team.findByTeamName(params.teamName)
         try{
+            teamService.cleanUp(teamToDelete)
             teamToDelete.delete(flush: true)
             flash.message= "Successfully deleted team «${teamToDelete}»"
         } catch (RuntimeException re) {
