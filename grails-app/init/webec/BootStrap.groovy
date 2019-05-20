@@ -7,6 +7,8 @@ class BootStrap {
     def init = { servletContext ->
 
         // in production or test, this might already be in the DB
+
+        //generate the two roles
         SecRole adminRole = save(SecRole.findOrCreateWhere(authority: SecRole.ADMIN))
         SecRole userRole = save(SecRole.findOrCreateWhere(authority: SecRole.USER))
 
@@ -14,6 +16,7 @@ class BootStrap {
             return
         }
 
+        // generate a few test users
         SecUser administrator = save(new SecUser(username: 'admin', password: 'password'))
         SecUserSecRole.create(administrator, adminRole, true)
 
@@ -21,9 +24,8 @@ class BootStrap {
         SecUserSecRole.create(daniel, adminRole, true)
 
         SecUser dierk = save(new SecUser(username: 'Dierk', password: 'toobad'))
-        SecUserSecRole.create(dierk, adminRole, true)
+        SecUserSecRole.create(dierk, userRole, true)
 
-        // generate a few test users
         for (int i = 0; i < 10; i++) {
             String usr = "user" + i
             String pwd = "password" + i
@@ -34,7 +36,7 @@ class BootStrap {
 
         // generate a few test teams
         for (int i = 0; i < 10; i++) {
-            save(new Team(teamName: "team " + i, captain: daniel, wins: i))
+            save(new Team(teamName: "team " + i, captain: dierk, wins: i, losses: (i*i)+1, winLossRatio: i/((i*i)+1)))
         }
 
         Team daniTeam = save(new Team(teamName: "DaniTeam", captain: daniel))

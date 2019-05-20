@@ -6,17 +6,26 @@ import grails.gorm.transactions.Transactional
 class TeamService {
 
     List<Team> topTen() {
-        return Team.list(max: 10, sort: "wins", order: "desc")
+        return Team.list(max: 10, sort: "winLossRatio", order: "desc")
     }
 
     def addWin(Team team) {
         def winsWinner = Team.findByTeamName(team).wins
-        team.setWins(winsWinner+1)
+        team.setWins(winsWinner + 1)
     }
 
     def addLoss(Team team) {
         def lossesLoser = Team.findByTeamName(team).losses
-        team.setLosses(lossesLoser+1)
+        team.setLosses(lossesLoser + 1)
+    }
+
+    def calculateWinLossRatio(Team team) {
+        if (team.losses != 0) {
+            team.winLossRatio = (team.wins / team.losses) as Double
+        } else {
+            team.winLossRatio = team.wins
+
+        }
     }
 
     def createTeam(String teamName, SecUser captain) {
@@ -30,7 +39,7 @@ class TeamService {
             throw new RuntimeException('Please enter a valid name.')
         }
         def teamToSave = new Team(teamName: teamName, wins: 0, losses: 0, captain: captain)
-            teamToSave.save(flush: true)
+        teamToSave.save(flush: true)
     }
 
     def cleanUp(Team teamToDelete) {
@@ -40,10 +49,10 @@ class TeamService {
 
         gameWinsOfTeam.each { game -> game.winner = null }
         gameLossesOfTeam.each { game -> game.loser = null }
-        gameWinsOfTeam.each { game -> game.save(flush: true)}
-        gameLossesOfTeam.each { game -> game.save(flush: true)}
+        gameWinsOfTeam.each { game -> game.save(flush: true) }
+        gameLossesOfTeam.each { game -> game.save(flush: true) }
 
-        memberships.each { mem -> mem.delete(flush: true)}
+        memberships.each { mem -> mem.delete(flush: true) }
     }
 
     // unused

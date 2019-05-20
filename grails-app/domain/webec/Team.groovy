@@ -6,6 +6,7 @@ class Team {
     SecUser captain
     int wins
     int losses
+    double winLossRatio
 
     static hasMany = [members: Membership]
 

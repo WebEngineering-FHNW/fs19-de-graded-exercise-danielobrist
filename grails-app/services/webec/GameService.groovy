@@ -45,6 +45,8 @@ class GameService {
         gameToConfirm.save(flush: true)
         teamService.addWin(winnerTeam)
         teamService.addLoss(loserTeam)
+        teamService.calculateWinLossRatio(winnerTeam)
+        teamService.calculateWinLossRatio(loserTeam)
 
         winnerTeam.save(flush: true)
         loserTeam.save(flush: true)

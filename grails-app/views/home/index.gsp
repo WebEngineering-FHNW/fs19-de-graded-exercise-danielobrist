@@ -31,12 +31,12 @@
                 <table id="topten" class="table-hover">
                     <tr>
                         <th>Team</th>
-                        <th>Points</th>
+                        <th>W/L Ratio</th>
                     </tr>
                     <g:each in="${topTen}">
                         <tr>
                             <td>${it.teamName}</td>
-                            <td>${it.wins}</td>
+                            <td><g:formatNumber number="${it.winLossRatio}" type="number" maxFractionDigits="3" /></td>
                         </tr>
                     </g:each>
                 </table>
