@@ -21,7 +21,7 @@ class MembershipController {
             println re.message
             flash.error = re.message
         }
-        redirect(controller:"team", action: "index")
+        redirect(controller:"team", action: "manage")
     }
 
     @Secured([SecRole.ADMIN, SecRole.USER])
@@ -35,7 +35,7 @@ class MembershipController {
             println re.message
             flash.error = re.message
         }
-        redirect(controller:"team", action: "index")
+        redirect(controller:"team", action: "manage")
     }
 
 }

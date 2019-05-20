@@ -26,17 +26,20 @@ class TeamController {
             teamService.createTeam(teamName, captain)
             flash.message = "Successfully created team «${teamName}»"
         } catch (RuntimeException re) {
-            println re.message
             flash.error = re.message
         }
-        redirect(controller:"team", action: "index")
+        redirect(controller:"team", action: "manage")
     }
 
     def delete () {
         def teamToDelete = Team.findByTeamName(params.teamName)
-        teamToDelete.delete(flush: true)
-        flash.message= "Successfully deleted team «${teamToDelete}»"
-        redirect(controller:"team", action: "index")
+        try{
+            teamToDelete.delete(flush: true)
+            flash.message= "Successfully deleted team «${teamToDelete}»"
+        } catch (RuntimeException re) {
+            flash.error = re.message
+        }
+        redirect(controller:"team", action: "manage")
     }
 
     // calculate win-loss-ratio
