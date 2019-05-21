@@ -54,13 +54,17 @@ class GameController {
      * Confirms a game by calling confirmGame method from GameService
      *
      * @param ID from the game in the respective table row
-     * @return success message
+     * @return success or error message
      */
     @Secured([SecRole.ADMIN, SecRole.USER])
     def confirm() {
-        Long gameId = params.gameId as Long
-        gameService.confirmGame(Long.valueOf(gameId))
-        flash.message = "Game confirmed!"
+        try {
+            Long gameId = params.gameId as Long
+            gameService.confirmGame(Long.valueOf(gameId))
+            flash.message = "Game confirmed!"
+        } catch (RuntimeException re) {
+            flash.error = re.message
+        }
         redirect(controller: "game", action: "confirmations")
     }
 

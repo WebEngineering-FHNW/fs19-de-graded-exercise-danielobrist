@@ -5,10 +5,20 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class TeamService {
 
+    /**
+     * Lists the 10 teams with the best win/loss ratio, ordered descending.
+     *
+     * @return top 10 list of teams
+     */
     List<Team> topTen() {
         return Team.list(max: 10, sort: "winLossRatio", order: "desc")
     }
 
+    /**
+     * Adds a win to the win property of a team.
+     *
+     * @param team passed by controller
+     */
     def addWin(Team team) {
         if (team != null) {
             def winsWinner = Team.findByTeamName(team).wins
@@ -16,6 +26,11 @@ class TeamService {
         }
     }
 
+    /**
+     * Adds a loss to the losses property of a team.
+     *
+     * @param team passed by controller
+     */
     def addLoss(Team team) {
         if (team != null) {
             def lossesLoser = Team.findByTeamName(team).losses
@@ -23,6 +38,11 @@ class TeamService {
         }
     }
 
+    /**
+     * Calculates win/loss ratio property of a team.
+     *
+     * @param team passed by controller
+     */
     def calculateWinLossRatio(Team team) {
         if (team.losses != 0) {
             team.winLossRatio = (team.wins / team.losses) as Double
@@ -32,6 +52,11 @@ class TeamService {
         }
     }
 
+    /**
+     * Creates a new team in the db.
+     *
+     * @param team and captain passed by controller
+     */
     def createTeam(String teamName, SecUser captain) {
 
         boolean exists = Team.findAllByTeamName(teamName).teamName.contains(teamName)
@@ -46,6 +71,11 @@ class TeamService {
         teamToSave.save(flush: true)
     }
 
+    /**
+     * Removes all the references of a team. This has to be done before we can delete it from the db.
+     *
+     * @param team passed by controller
+     */
     def cleanUp(Team teamToDelete) {
         def gameWinsOfTeam = Game.findAllByWinner(teamToDelete)
         def gameLossesOfTeam = Game.findAllByLoser(teamToDelete)
@@ -59,8 +89,12 @@ class TeamService {
         memberships.each { mem -> mem.delete(flush: true) }
     }
 
-    // unused
-    // determines if a user is the captain of a team
+    /**
+     * Unused.
+     * Determines if a user is the captain of a team.
+     *
+     * @param team passed by controller, user
+     */
     def isCaptain(SecUser me, Team team) {
         SecUser captain = Team.findById(team.id).getCaptain()
         return captain.equals(me)
