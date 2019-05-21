@@ -24,6 +24,12 @@ D. König
 
 How to start the project: (if other than `grailsw run-app`)
 
+Credentials:
+
+Regular access: Username: Dierk, Password: toobad
+
+Admin access: Username: admin, Password: password
+
 How to test the project:  (if other than `grailsw test-app`)
 
 Hand-written, static HTML 
@@ -34,6 +40,14 @@ External contributions:
 Other comments: 
 
 I'm particular proud of:
+
+- Building my first grails web application
+
+- Writing my own actions and service methods instead of using scaffold
+
+- Nice feedback through snackbar messages
+
+- Deleting a team cleans up all the references it had in other domains
 
 
 ## Project grading 
