@@ -2,7 +2,7 @@ package webec
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured([SecRole.ADMIN, SecRole.USER])
+@Secured([SecRole.ADMIN])
 class TeamController {
     static scaffold = Team
 
@@ -11,6 +11,7 @@ class TeamController {
 
 
     // lists Teams where current user is member
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def manage() {
         def user = springSecurityService.currentUser
         List<Membership> memberships = Membership.findAllByPlayer(user)
@@ -18,6 +19,7 @@ class TeamController {
         [userMemberships:memberships, teamsCaptainOf:teamsCaptainOf]
     }
 
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def create() {
         def user = springSecurityService.currentUser
         String teamName = params.teamName
@@ -31,6 +33,7 @@ class TeamController {
         redirect(controller:"team", action: "manage")
     }
 
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def delete () {
         def teamToDelete = Team.findByTeamName(params.teamName)
         try{
@@ -42,10 +45,4 @@ class TeamController {
         }
         redirect(controller:"team", action: "manage")
     }
-
-    // calculate win-loss-ratio
-    def winLossRatio() {
-        //TODO: calculate ratio via service and pass it to view
-    }
-
 }

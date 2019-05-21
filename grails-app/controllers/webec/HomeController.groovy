@@ -2,12 +2,17 @@ package webec
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured([SecRole.ADMIN, SecRole.USER])
+@Secured([SecRole.ADMIN])
 class HomeController {
 
     TeamService teamService
 
-    // get the ten teams with the best most points
+    /**
+     * Calls topTen method in teamService to list the best 10 teams
+     *
+     * @return list with 10 best teams
+     */
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def index() {
         List<Team> topTenList = teamService.topTen()
         [topTen:topTenList]

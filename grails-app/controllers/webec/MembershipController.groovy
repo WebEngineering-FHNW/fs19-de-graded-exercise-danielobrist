@@ -10,6 +10,12 @@ class MembershipController {
     def springSecurityService
     def membershipService
 
+    /**
+     * Does
+     *
+     * @param
+     * @return
+     */
     @Secured([SecRole.ADMIN, SecRole.USER])
     def create() {
         Long userid = springSecurityService.getCurrentUser().id

@@ -2,7 +2,7 @@ package webec
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured([SecRole.ADMIN, SecRole.USER])
+@Secured([SecRole.ADMIN])
 class GameController {
 
     def gameService
@@ -10,6 +10,13 @@ class GameController {
 
     static scaffold = Game
 
+    /**
+     * Saves a game by calling GameService and flashes error messages if it fails.
+     * Redirects to home/index
+     *
+     * @param winner, loser, scoreWinner, scoreLoser
+     * @return success or error message
+     */
     @Secured([SecRole.ADMIN, SecRole.USER])
     def save() {
         try {
@@ -30,14 +37,26 @@ class GameController {
         redirect(controller: "home", action: "index")
     }
 
-    // lists all games a team lost for confirmation by the losing team
+    /**
+     * Calls GameService to list all unconfirmed Games of the currently logged in user
+     *
+     * @param the currently logged in user
+     * @return list of unconfirmed games by the currently logged in user
+     */
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def confirmations() {
         def user = springSecurityService.currentUser
         List<Game> unconfirmedGamesLostByUser = gameService.listUnconfirmedGamesOfUser(user)
         [gamesToConfirm: unconfirmedGamesLostByUser]
     }
 
-    //confirm selected game
+    /**
+     * Confirms a game by calling confirmGame method from GameService
+     *
+     * @param ID from the game in the respective table row
+     * @return success message
+     */
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def confirm() {
         Long gameId = params.gameId as Long
         gameService.confirmGame(Long.valueOf(gameId))
@@ -45,7 +64,14 @@ class GameController {
         redirect(controller: "game", action: "confirmations")
     }
 
-    //refuse selected game - deletes it from db (should probably rework this in the future)
+    /**
+     * Refuses a game by calling refuseGame method from GameService
+     * - deletes the game from db (should probably rework this in the future)
+     *
+     * @param ID from the game in the respective table row
+     * @return success message
+     */
+    @Secured([SecRole.ADMIN, SecRole.USER])
     def refuse() {
         Long gameId = params.gameId as Long
         gameService.refuseGame(gameId)
