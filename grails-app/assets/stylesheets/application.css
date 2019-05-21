@@ -112,7 +112,6 @@ input[type=button] {
     height: 2em;
     width: 2em;
     align-content: center;
-    float: right;
 }
 
 input[type=number] {
@@ -211,20 +210,21 @@ th:hover, tr:hover {
     padding-bottom: 6px;
     margin: 60px auto;
     text-align: left;
-    background-color: #d9d9e3;
-    -moz-box-shadow: 2px 2px 2px #eee;
+    background-color: #e5e5e5;
+    -moz-box-shadow: 2px 2px 2px #fff;
     -webkit-box-shadow: 2px 2px 2px #eee;
-    -khtml-box-shadow: 2px 2px 2px #eee;
-    box-shadow: 2px 2px 2px #eee;
+    -khtml-box-shadow: 2px 2px 2px #fff;
+    box-shadow: 2px 2px 2px #fff;
     border-radius: 5px; /* 5px rounded corners */
 }
 #login .inner .fheader {
     padding: 18px 26px 14px 26px;
-    background-color: #f7f7ff;
+    background-color: #e5e5e5;
     margin: 0px 0 14px 0;
-    color: #2e3741;
+    color: #454545;
     font-size: 18px;
     font-weight: bold;
+    border-radius: 5px; /* 5px rounded corners */
 
 
 }
@@ -288,7 +288,6 @@ th:hover, tr:hover {
     background-color: #f44336; /* Red */
     color: white;
     margin-bottom: 15px;
-    opacity: 1;
 }
 
 .alert-success {
@@ -317,7 +316,21 @@ th:hover, tr:hover {
     transition: 0.3s;
 }
 
+td a span.closebtn {
+    color: #454545;
+}
+
 /* When moving the mouse over the close button */
 .closebtn:hover {
     color: black;
+}
+
+td a span.closebtn:hover {
+    color: royalblue;
+}
+
+
+.navbar-nav>li>a:hover {
+    background-color: #e5e5e5;
+    color: white
 }

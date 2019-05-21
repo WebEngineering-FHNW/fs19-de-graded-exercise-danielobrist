@@ -49,6 +49,7 @@ I'm particular proud of:
 
 - Deleting a team cleans up all the references it had in other domains
 
+- Detailed documentation of controller and services
 
 ## Project grading 
 
