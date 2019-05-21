@@ -3,7 +3,6 @@
 <head>
     <meta name="layout" content="main"/>
     <meta charset="UTF-8">
-    <asset:stylesheet src="style.css"/>
     <title>Kicker Board</title>
     <script>
         function increase(valueName) {

@@ -3,12 +3,11 @@
 <head>
     <meta name="layout" content="main"/>
     <meta charset="UTF-8">
-    <asset:stylesheet src="application.css"/>
     <title>Kicker Board</title>
 </head>
 
 <body>
-<div id=firstrow class="row">
+<div id="firstrow" class="row">
     <div id="firstcolumn" class="column">
         <div class="card">
             <div class="container">

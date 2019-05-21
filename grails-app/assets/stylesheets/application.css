@@ -62,8 +62,9 @@ li a:hover {background-color: #ddd;}
 /* GENERAL LAYOUT ELEMENTS */
 
 body {
-    background-image: url("../images/background.svg");
-    background-size: 500px;
+    /* background-image: url("../images/Soccer_Field_Transparant.svg"); */
+    background-image: linear-gradient(forestgreen, royalblue);
+    background-size: auto;
     background-repeat: repeat;
     color:#454545;
 }
@@ -277,21 +278,31 @@ th:hover, tr:hover {
 
 /* The alert message box */
 .alert-danger {
+    position: fixed;
+    top: 90%;
+    left: 10%;
+    margin-top: -50px;
+    margin-left: -100px;
+    z-index: 100;
     padding: 20px;
     background-color: #f44336; /* Red */
     color: white;
     margin-bottom: 15px;
     opacity: 1;
-    transition: opacity 0.6s; /* 600ms to fade out */
 }
 
 .alert-success {
+    position: fixed;
+    top: 90%;
+    left: 10%;
+    margin-top: -50px;
+    margin-left: -100px;
+    z-index: 100;
     padding: 20px;
     background-color: #5cb85c; /* Green */
     color: white;
     margin-bottom: 15px;
     opacity: 1;
-    transition: opacity 0.6s; /* 600ms to fade out */
 }
 
 /* The close button */
